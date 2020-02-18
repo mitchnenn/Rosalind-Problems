@@ -1,17 +1,22 @@
 namespace Rosalind_Problems
 
+open System.Text
+
 module Common =
     
     let toUpper (x:string) = x.ToUpper()
+    
+    let getNucleobase (nb,_) = nb 
 
+    let getCount (_,c) = c
+
+    // DNA
     let validDnaNucleobase c =
         match c with
         | ('A'|'C'|'G'|'T') -> c
         | _ -> ' '
     
     let explode (x:string) = [| for c in x -> validDnaNucleobase(c) |]
-    
-    let getNucleobase (nb,_) = nb 
 
     let countNucleoBases data =
         toUpper data
@@ -20,4 +25,16 @@ module Common =
         |> Seq.sortBy(fun x -> getNucleobase(x))
         |> Seq.toList
 
-    let getCount (_,c) = c
+    // RNA
+    let convertDnaNucleobaseToRna c =
+        match c with
+        | ('A'|'C'|'G') -> c
+        | 'T' -> 'U'
+        | _ -> ' '
+    
+    let explodeDnaToRna (x:string) = [| for c in x -> convertDnaNucleobaseToRna(c) |]
+
+    let implode (x:char list) =
+        let sb = StringBuilder(x.Length)
+        x |> List.iter (sb.Append >> ignore)
+        sb.ToString()

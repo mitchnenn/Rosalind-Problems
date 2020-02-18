@@ -16,9 +16,13 @@
         <Content Include="TestData\rosalind_dna.txt">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+        <Content Include="TestData\convert_dna_rna.txt">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
         <Compile Include="Helpers.fs" />
         <Compile Include="Common.fs" />
         <Compile Include="CountDnaNucleotides.fs" />
+        <Compile Include="ConvertDnaToRna.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
