@@ -5,28 +5,9 @@ open System.IO
 open Xunit
 open Xunit.Abstractions
 open Helpers
+open Common
 
 module Tests =
-
-    let toUpper (x:string) = x.ToUpper()
-
-    let validNucleobase c =
-        match c with
-        | ('A'|'C'|'G'|'T') -> c
-        | _ -> ' '
-    
-    let explode (x:string) = [| for c in x -> validNucleobase(c) |]
-    
-    let getNucleobase (nb,_) = nb 
-
-    let countNucleoBases data =
-        toUpper data
-        |> explode
-        |> Seq.countBy id
-        |> Seq.sortBy(fun x -> getNucleobase(x))
-        |> Seq.toList
-
-    let getCount (_,c) = c
         
     type RosalindTests(output : ITestOutputHelper) =
         do new Converter(output) |> Console.SetOut
