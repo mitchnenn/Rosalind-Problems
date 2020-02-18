@@ -13,7 +13,7 @@
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <Compile Include="Helpers.fs" />
-        <Compile Include="Tests.fs" />
+        <Compile Include="CountDnaNucleotides.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
