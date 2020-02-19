@@ -16,6 +16,14 @@ module Common =
         | ('A'|'C'|'G'|'T') -> c
         | _ -> ' '
     
+    let complimentNucleotideBase c =
+        match c with
+        | 'A' -> 'T'
+        | 'T' -> 'A'
+        | 'C' -> 'G'
+        | 'G' -> 'C'
+        | _ -> ' '
+    
     let explode (x:string) = [| for c in x -> validDnaNucleobase(c) |]
 
     let countNucleoBases data =
