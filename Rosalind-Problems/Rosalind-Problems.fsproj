@@ -27,6 +27,7 @@
         <Compile Include="CountDnaNucleotides.fs" />
         <Compile Include="ConvertDnaToRna.fs" />
         <Compile Include="ComplimentDnaNucleotideBases.fs" />
+        <Compile Include="FibRabbits.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
