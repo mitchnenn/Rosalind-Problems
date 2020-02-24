@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Rosalind-Problems", "Rosalind-Problems\Rosalind-Problems.fsproj", "{4151A4AF-959C-4C00-8315-E9E4CABA39E0}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RosalindLib", "RosalindLib\RosalindLib.fsproj", "{28162C98-A711-4C6C-A3BE-F82CAC559980}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{4151A4AF-959C-4C00-8315-E9E4CABA39E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4151A4AF-959C-4C00-8315-E9E4CABA39E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4151A4AF-959C-4C00-8315-E9E4CABA39E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28162C98-A711-4C6C-A3BE-F82CAC559980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28162C98-A711-4C6C-A3BE-F82CAC559980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28162C98-A711-4C6C-A3BE-F82CAC559980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28162C98-A711-4C6C-A3BE-F82CAC559980}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

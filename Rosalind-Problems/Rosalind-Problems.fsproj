@@ -22,12 +22,17 @@
         <Content Include="TestData\rosalind_compliment.txt">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+        <Content Include="TestData\rosalind.fasta">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
         <Compile Include="Helpers.fs" />
         <Compile Include="Common.fs" />
         <Compile Include="CountDnaNucleotides.fs" />
         <Compile Include="ConvertDnaToRna.fs" />
         <Compile Include="ComplimentDnaNucleotideBases.fs" />
         <Compile Include="FibRabbits.fs" />
+        <Compile Include="ParseFasta.fs" />
+        <Compile Include="ParseFastaChars.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
@@ -36,6 +41,10 @@
         <PackageReference Include="xunit" Version="2.4.0" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
         <PackageReference Include="coverlet.collector" Version="1.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RosalindLib\RosalindLib.fsproj" />
     </ItemGroup>
 
 </Project>
