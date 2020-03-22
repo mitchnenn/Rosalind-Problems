@@ -1,44 +1,47 @@
 namespace Rosalind_Problems
 
+open System.Linq
 open System.IO
-open System.Text.RegularExpressions
 open Xunit
-open Common
 
 module ParseFasta =
     
-    let readChars (inputFastaFile:string) =
+    let readLines (path:string) =
         seq {
-            use sr = new StreamReader (inputFastaFile)
-            while sr.Peek() >= 0 do
-                let c : char = sr.Read() |> char
-                yield c
+            use sr = new StreamReader(path)
+            while not sr.EndOfStream do
+                yield sr.ReadLine()
         }
 
-    let parseRecord recordChars =
-        let labelPos = recordChars |> Seq.findIndex (fun c -> c = '\n')
-        let trim = @">|\t|\n|\r|\s*"
-        let label = Regex.Replace(recordChars |> Seq.take labelPos |> Seq.toList |> implode, trim, "")
-        let dna = Regex.Replace(recordChars |> Seq.skip labelPos |> Seq.toList |> implode, trim, "")
-        (label, dna)
+    let (|Header|_|) (line:string) =
+        if line.[0] = '>' then
+            Some <| Header (line.[1..])
+        else
+            None
+            
+    let getSequences (lines:string seq) =
+        seq {
+            let mutable header = ""
+            let mutable sequence = ""
+            for line in lines do
+                match line with
+                | l when l.Trim().StartsWith(";") -> ()
+                | l when l.Trim() = "" -> ()
+                | Header h ->
+                    if header <> "" then yield (header,sequence)
+                    header <- h
+                    sequence <- ""
+                | _ -> sequence <- sequence + line
+            if header <> "" then yield (header,sequence)
+        }
     
-    let getRecord chars startPos =
-        let skip = if startPos = 0 then 1 else startPos
-        let pos = chars |> Seq.skip skip |> Seq.findIndex(fun c -> c = '>')
-        let record = chars |> Seq.take(pos) 
-        parseRecord record
-
-    let fastaEntries (inputFastaFile:string) =
-        let chars = readChars inputFastaFile
-        getRecord chars 0
-                                
     [<Fact>]
     let parseFastaTest () =
-        // Arrange.
         let workingDir = Path.Combine(Directory.GetCurrentDirectory(), "TestData")
         let inputFastaFile = Path.Combine(workingDir, "rosalind.fasta")
-        // Act.
-        let dnaStrings = fastaEntries inputFastaFile
-        // Assert.
-        Assert.True(false)
+        let lines = readLines inputFastaFile
+            
+        let recordLines = getSequences lines
+        
+        Assert.True(recordLines.Count() > 0);
         
