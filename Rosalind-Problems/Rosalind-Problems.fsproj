@@ -32,7 +32,6 @@
         <Compile Include="ComplimentDnaNucleotideBases.fs" />
         <Compile Include="FibRabbits.fs" />
         <Compile Include="ParseFasta.fs" />
-        <Compile Include="ParseFastaChars.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 

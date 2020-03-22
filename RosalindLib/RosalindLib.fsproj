@@ -5,7 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="ProcessFasta.fs" />
         <Compile Include="Library.fs" />
     </ItemGroup>
 
