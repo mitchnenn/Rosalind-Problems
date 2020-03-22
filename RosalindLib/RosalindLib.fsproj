@@ -5,7 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="StringUtilities.fs" />
+        <Compile Include="MathUtilities.fs" />
+        <Compile Include="FileUtilities.fs" />
+        <Compile Include="ReadFasta.fs" />
         <Compile Include="Library.fs" />
+        <Compile Include="CGContent.fs" />
     </ItemGroup>
 
     <ItemGroup>
