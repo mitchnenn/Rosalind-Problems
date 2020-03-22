@@ -9,8 +9,9 @@
         <Compile Include="MathUtilities.fs" />
         <Compile Include="FileUtilities.fs" />
         <Compile Include="ReadFasta.fs" />
-        <Compile Include="Library.fs" />
         <Compile Include="CGContent.fs" />
+        <Compile Include="HammingDistance.fs" />
+        <Compile Include="Library.fs" />
     </ItemGroup>
 
     <ItemGroup>
