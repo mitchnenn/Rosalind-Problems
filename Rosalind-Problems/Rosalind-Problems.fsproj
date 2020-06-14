@@ -47,6 +47,7 @@
         <Compile Include="HammingDistance.fs" />
         <Compile Include="MendelProbability.fs" />
         <Compile Include="TarnslatingRna.fs" />
+        <Compile Include="Motif.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
