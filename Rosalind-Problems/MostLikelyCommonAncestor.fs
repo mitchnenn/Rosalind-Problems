@@ -8,17 +8,6 @@ open Xunit.Abstractions
 
 module MostLikelyCommonAncestor =
     
-    let dnaStrings (fastalines:string seq) = 
-        let fastaLinesArray = fastalines |> Seq.toArray
-        let rec loop index accum =
-            let branch = index < fastaLinesArray.Length
-            match branch with
-            | false -> accum |> List.rev
-            | true ->
-                let value = fastaLinesArray.[index+1]
-                loop (index+2) (value::accum)
-        (loop 0 [])
-    
     let createConsensusMatrix (dnaStrings:string []) = 
         let rec loop index (accum:char[,]) =
             let branch = index < dnaStrings.Length
@@ -27,16 +16,17 @@ module MostLikelyCommonAncestor =
             | true ->
                 let nextIndex = index + 1
                 let charArray = dnaStrings.[index].ToCharArray()
-                let rec assign charindex =
-                    let isDone = charindex < dnaStrings.[0].Length
-                    match isDone with
-                    | false -> 0 |> ignore
-                    | true ->
-                        accum.[index, charindex] <- charArray.[charindex]
-                        assign (charindex+1)
-                assign 0
+                for i in [0..(charArray.Length-1)] do
+                    accum.[index, i] <- charArray.[i]
                 loop nextIndex accum 
         loop 0 (Array2D.zeroCreate<char> dnaStrings.Length dnaStrings.[0].Length)
+    
+    let getConsensusFastaAsMatrix (path:string) = 
+        FileUtilities.readLines path
+            |> ReadFasta.getSequences
+            |> Seq.map (fun (_,v) -> v)
+            |> Seq.toArray
+            |> createConsensusMatrix 
     
     let getColumnConsensus (matrix:char[,]) colIndex =
         matrix.[*,colIndex]
@@ -72,18 +62,14 @@ module MostLikelyCommonAncestor =
         
         [<Fact>]
         member __.``Calculate consensus test.`` () =
-            let lines = FileUtilities.readLines "TestData/MostLikelyCommonAncestor.txt"
-            let dnaStrings = dnaStrings lines |> Seq.toArray
-            let matrix = createConsensusMatrix dnaStrings 
+            let matrix = getConsensusFastaAsMatrix "TestData/MostLikelyCommonAncestor.txt"
             let consensus = String.Join("", (getConsensus matrix))
             printfn "%s" consensus
             Assert.Equal("ATGCAACT", consensus)
             
         [<Fact>]
         member __.``Calculate consunsus counts test`` () =
-            let lines = FileUtilities.readLines "TestData/MostLikelyCommonAncestor.txt"
-            let dnaStrings = dnaStrings lines |> Seq.toArray
-            let matrix = createConsensusMatrix dnaStrings 
+            let matrix = getConsensusFastaAsMatrix "TestData/MostLikelyCommonAncestor.txt"
             let dnasymbols = ['A';'C';'G';'T']
             for symbol in dnasymbols do
                 let consensusCounts = String.Join("", (getConsensusCountBySymbol symbol matrix))
