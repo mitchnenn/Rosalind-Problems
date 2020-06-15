@@ -37,6 +37,9 @@
         <Content Include="TestData\rna_codon_data_set.txt">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <Content Include="TestData\MostLikelyCommonAncestor.txt">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
         <Compile Include="Helpers.fs" />
         <Compile Include="Common.fs" />
         <Compile Include="CountDnaNucleotides.fs" />
@@ -48,6 +51,9 @@
         <Compile Include="MendelProbability.fs" />
         <Compile Include="TarnslatingRna.fs" />
         <Compile Include="Motif.fs" />
+        <Compile Include="MostLikelyCommonAncestor.fs">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Compile>
         <Compile Include="Program.fs" />
     </ItemGroup>
 

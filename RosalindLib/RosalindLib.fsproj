@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="SeqUtilities.fs" />
         <Compile Include="StringUtilities.fs" />
         <Compile Include="MathUtilities.fs" />
         <Compile Include="FileUtilities.fs" />
