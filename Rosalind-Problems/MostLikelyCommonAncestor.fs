@@ -38,14 +38,54 @@ module MostLikelyCommonAncestor =
                 loop nextIndex accum 
         loop 0 (Array2D.zeroCreate<char> dnaStrings.Length dnaStrings.[0].Length)
     
+    let getColumnConsensus (matrix:char[,]) colIndex =
+        matrix.[*,colIndex]
+        |> Seq.countBy id
+        |> Seq.sortByDescending (fun (_,c) -> c)
+        |> Seq.head
+        |> fun (i,_) -> i
+
+    let getConsensus (matrix:char[,]) = seq [
+        let columns = Array2D.length2 matrix
+        for i in 0..(columns-1) do
+            yield getColumnConsensus matrix i
+    ]
+    
+    let getColumnConsensusCountBySymbol symbol (matrix:char[,]) colIndex =
+        matrix.[*,colIndex]
+        |> Seq.countBy id
+        |> Seq.sortByDescending (fun (_,c) -> c)
+        |> Seq.tryFind (fun (i,_) -> i = symbol)
+
+    let getConsensusCountBySymbol (symbol:char) (matrix:char[,]) = seq [
+        yield (sprintf "%c:" symbol)
+        let columns = Array2D.length2 matrix
+        for i in 0..(columns-1) do
+            let count = getColumnConsensusCountBySymbol symbol matrix i
+            match count with
+            | Some (_,c) -> yield (sprintf " %i" c)
+            | None -> yield " 0"
+    ]
+    
     type MostLikelyCommonAncestorTests(output: ITestOutputHelper) =
         do new Converter(output) |> Console.SetOut
         
         [<Fact>]
-        member __.``Most likely common ancestor test`` () =
+        member __.``Calculate consensus test.`` () =
             let lines = FileUtilities.readLines "TestData/MostLikelyCommonAncestor.txt"
             let dnaStrings = dnaStrings lines |> Seq.toArray
             let matrix = createConsensusMatrix dnaStrings 
-            printfn "%A" matrix
+            let consensus = String.Join("", (getConsensus matrix))
+            printfn "%s" consensus
+            Assert.Equal("ATGCAACT", consensus)
             
-            Assert.True(true)
+        [<Fact>]
+        member __.``Calculate consunsus counts test`` () =
+            let lines = FileUtilities.readLines "TestData/MostLikelyCommonAncestor.txt"
+            let dnaStrings = dnaStrings lines |> Seq.toArray
+            let matrix = createConsensusMatrix dnaStrings 
+            let dnasymbols = ['A';'C';'G';'T']
+            for symbol in dnasymbols do
+                let consensusCounts = String.Join("", (getConsensusCountBySymbol symbol matrix))
+                printfn "%A" consensusCounts
+            Assert.True(true);
