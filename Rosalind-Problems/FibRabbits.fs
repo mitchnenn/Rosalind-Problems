@@ -1,6 +1,7 @@
 namespace Rosalind_Problems
 
 open System
+open System.Numerics
 open Helpers
 open Xunit
 open Xunit.Abstractions
@@ -30,6 +31,26 @@ module FibRabbits =
         // Assert
         Assert.Equal(expected, pairs)
     
+    let getFibPairsWithMortality generations lifespan =
+        let rec loop popStack genNum =
+            match genNum with
+            | x when x = generations -> popStack |> List.sum
+            | _ ->
+                let offspring = popStack |> List.tail |> List.sum
+                let nextPopStack = (offspring::popStack) |> List.truncate lifespan |> Seq.toList
+                loop nextPopStack (genNum+1)
+        loop [BigInteger(1)] 1                
+
+    [<Theory>]
+    [<InlineData(5, 3, 3.0)>]
+    [<InlineData(6, 3, 4.0)>]
+    let ``Test Fibinacci rabbits with mortality`` generations lifespan expected =
+        // Arrange.
+        // Act.
+        let actual = getFibPairsWithMortality generations lifespan
+        // Assert
+        Assert.Equal(expected, actual)
+
     type FibRabbitsTests(output : ITestOutputHelper) =
         do new Converter(output) |> Console.SetOut
             
@@ -43,3 +64,14 @@ module FibRabbits =
             // Assert.
             Assert.Equal(40238153982301.0, pairs)
             
+
+        [<Fact>]
+        member __.``Rosiland challenge Fibinacci rabbits with mortality`` () =
+            // Arrange.
+            let generations = 98
+            let lifespan = 16
+            // Act.
+            let pairPopulation = getFibPairsWithMortality generations lifespan
+            printfn "%A" pairPopulation
+            // Assert.
+            Assert.Equal(BigInteger.Parse("133017273573938853338"), pairPopulation)
