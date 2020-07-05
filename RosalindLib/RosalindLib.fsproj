@@ -9,6 +9,7 @@
         <Compile Include="StringUtilities.fs" />
         <Compile Include="MathUtilities.fs" />
         <Compile Include="FileUtilities.fs" />
+        <Compile Include="ParseFasta.fs" />
         <Compile Include="ReadFasta.fs" />
         <Compile Include="CGContent.fs" />
         <Compile Include="HammingDistance.fs" />
