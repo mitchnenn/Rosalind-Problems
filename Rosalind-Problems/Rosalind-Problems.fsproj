@@ -13,8 +13,8 @@
         <None Include="app.config">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <Content Include="TestData/**/*.*">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <Content Include="TestData/**/*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
         <Compile Include="Helpers.fs" />
         <Compile Include="Common.fs" />
@@ -28,17 +28,8 @@
         <Compile Include="TarnslatingRna.fs" />
         <Compile Include="Motif.fs" />
         <Compile Include="MostLikelyCommonAncestor.fs" />
+        <Compile Include="AdjacentGraphList.fs" />
         <Compile Include="Program.fs" />
-        <Content Include="TestData\rna_codon_data_set.txt" />
-        <Content Include="TestData\hamming.txt" />
-        <Content Include="TestData\AdjacentGraphList.fasta" />
-        <Content Include="TestData\rosalind_dna.txt" />
-        <Content Include="TestData\convert_dna_rna.txt" />
-        <Content Include="TestData\MostLikelyCommonAncestor.txt" />
-        <Content Include="TestData\rosalind_compliment.txt" />
-        <Content Include="TestData\MendelPopulations.txt" />
-        <Content Include="TestData\rosalind.fasta" />
-        <Content Include="TestData\rna-codon-table.csv" />
     </ItemGroup>
 
     <ItemGroup>

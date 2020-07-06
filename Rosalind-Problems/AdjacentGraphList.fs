@@ -21,5 +21,7 @@ module AdjacentGraphList =
             
         [<Fact>]
         member __.``Test adjacent graph list`` () =
-            let entries = parseFastaEntries "TestData"
+            let entries = parseFastaEntries "TestData/AdjacentGraphList.fasta"
+            let (id, sequence) = entries.[0]
+            printfn "%s" id
             Assert.True(true)
