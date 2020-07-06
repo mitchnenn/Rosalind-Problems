@@ -5,9 +5,10 @@ open Xunit
 open Xunit.Abstractions
 open Rosalind_Problems.Helpers
 open RosalindLib.ParseFasta
+open RosalindLib.GraphOverlapEdges
 
 module AdjacentGraphList =
-
+    
     type AdjacentGraphListTests(output: ITestOutputHelper) =
         do new Converter(output) |> Console.SetOut
 
@@ -18,10 +19,13 @@ module AdjacentGraphList =
             let (id, sequence) = entries.[0]
             Assert.True(id.StartsWith("Rosalind"))
             Assert.True(sequence.StartsWith("GCCGGGTGCCGTGGCAAGAGTAGCGGTTCTCAGACCATA"))
-            
-        [<Fact>]
-        member __.``Test adjacent graph list`` () =
+        
+        [<Theory>]
+        [<InlineData(3)>]
+        member __.``Test adjacent graph list`` (k:int) =
             let entries = parseFastaEntries "TestData/AdjacentGraphList.fasta"
-            let (id, sequence) = entries.[0]
-            printfn "%s" id
+            let edges = determineEdges k entries
+            for edge in edges do
+                let (e1,e2) = edge
+                Console.Write("{0} {1}", e1, e2)
             Assert.True(true)

@@ -24,9 +24,3 @@ module ParseFasta =
         match reply with
         | Success(result, _, _) -> result
         | Failure(_,_,_) -> List.empty
-
-    let parseFastaTest =
-        let reply = runParserOnFile entries () "TestData/rosalind.fasta" Encoding.UTF8      
-        match reply with
-        | Success(result, _, _) -> printfn "%A" result; 0
-        | Failure(errorMsg, _, _) -> printfn "%s" errorMsg; 1

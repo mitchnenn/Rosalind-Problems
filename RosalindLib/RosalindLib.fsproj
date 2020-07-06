@@ -13,6 +13,7 @@
         <Compile Include="ReadFasta.fs" />
         <Compile Include="CGContent.fs" />
         <Compile Include="HammingDistance.fs" />
+        <Compile Include="GraphOverlapEdges.fs" />
         <Compile Include="Library.fs" />
     </ItemGroup>
 

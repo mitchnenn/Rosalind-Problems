@@ -11,4 +11,4 @@ module Helpers =
         override __.WriteLine message =
             output.WriteLine message
         override __.Write message =
-                output.WriteLine message
+            output.WriteLine message
