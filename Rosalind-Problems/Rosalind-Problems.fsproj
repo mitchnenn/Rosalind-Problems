@@ -29,6 +29,7 @@
         <Compile Include="Motif.fs" />
         <Compile Include="MostLikelyCommonAncestor.fs" />
         <Compile Include="AdjacentGraphList.fs" />
+        <Compile Include="CalcExpectedOffspring.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
