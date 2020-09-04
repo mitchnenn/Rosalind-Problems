@@ -31,6 +31,7 @@
         <Compile Include="AdjacentGraphList.fs" />
         <Compile Include="CalcExpectedOffspring.fs" />
         <Compile Include="CommonMotif.fs" />
+        <Compile Include="MendelSecondLaw.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
