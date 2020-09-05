@@ -3,6 +3,7 @@
 open System.Text.RegularExpressions
 open FSharp.Data
 open System.Linq
+open RosalindLib
 
 let getSequence name = 
     let url = sprintf "https://www.uniprot.org/uniprot/%s.fasta" name
@@ -22,10 +23,11 @@ let formatIndexes indexes = indexes |> Seq.iter (printf "%A ")
 
 [<EntryPoint>]
 let main argv =
-    let name = "A2Z669"
-    let matches = getMatches name
-    if matches.Any() then
-        let indexes = matches |> Seq.map toIndex
-        printfn "%s" name
-        formatIndexes indexes         
+    for name in FileUtilities.readLines "TestData/SampleDataset.txt" do
+        let matches = getMatches name
+        if matches.Any() then
+            let indexes = matches |> Seq.map toIndex
+            printfn "%s" name
+            formatIndexes indexes
+            printfn ""
     0 // return an integer exit code
