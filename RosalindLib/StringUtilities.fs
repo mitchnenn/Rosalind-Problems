@@ -1,6 +1,7 @@
 namespace RosalindLib
 
 open System
+open System.Text
 
 module StringUtilities =
     
@@ -16,3 +17,12 @@ module StringUtilities =
              | true -> loop (s.[size..]) (s.[0..size-1]::accum)
              | false -> s::accum
          (loop str []) |> List.rev
+
+    let toUpper (x:string) = x.ToUpper()
+    
+    let explode (x:string) = x.ToCharArray()
+    
+    let implode (x:char list) =
+        let sb = StringBuilder(x.Length)
+        x |> List.iter (sb.Append >> ignore)
+        sb.ToString()

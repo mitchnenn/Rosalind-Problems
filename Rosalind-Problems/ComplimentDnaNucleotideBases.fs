@@ -5,27 +5,28 @@ open System.IO
 open Helpers
 open Xunit
 open Xunit.Abstractions
+open RosalindLib.StringUtilities
 open RosalindLib.Common
 
 module ComplimentDnaNucleotideBases =
     
     let complimentDna dna =
         toUpper dna
-        |> explode
+        |> explodeValidDnaNucleotideBase
         |> Seq.map(fun b -> complimentNucleotideBase(b))
         |> Seq.toList
         |> implode
         
     let reverseDna dna = 
         toUpper dna
-        |> explode
+        |> explodeValidDnaNucleotideBase
         |> Seq.rev
         |> Seq.toList
         |> implode
         
     let complimentReverseDna dna =
         toUpper dna
-        |> explode
+        |> explodeValidDnaNucleotideBase
         |> Seq.map(fun b -> complimentNucleotideBase(b))
         |> Seq.rev
         |> Seq.toList

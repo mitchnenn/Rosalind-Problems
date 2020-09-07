@@ -4,6 +4,7 @@ open System
 open System.IO
 open Xunit
 open Xunit.Abstractions
+open RosalindLib.StringUtilities
 open RosalindLib.Common
 open Helpers
 
@@ -18,10 +19,9 @@ module ConvertDnaToRna =
             let data = File.ReadAllText("TestData/convert_dna_rna.txt")
                         
             // Act.
-            let results = explodeDnaToRna data |> Seq.toList
+            let actual = translateDnaToRna data
             
             // Assert.
-            let actual = implode results
             printfn "%s" actual
             Assert.Equal("GAUGGAACUUGACUACGUAAAUU", actual)
             

@@ -1,10 +1,8 @@
 namespace RosalindLib
 
-open System.Text
+open StringUtilities
 
 module Common =
-    
-    let toUpper (x:string) = x.ToUpper()
     
     let getNucleobase (nb,_) = nb 
 
@@ -24,11 +22,14 @@ module Common =
         | 'G' -> 'C'
         | _ -> ' '
     
-    let explode (x:string) = [| for c in x -> validDnaNucleobase(c) |]
+    let explodeValidDnaNucleotideBase (x:string) = seq { 
+        for c in explode x do
+            yield validDnaNucleobase c
+    }
 
     let countNucleoBases data =
         toUpper data
-        |> explode
+        |> explodeValidDnaNucleotideBase
         |> Seq.countBy id
         |> Seq.sortBy(fun x -> getNucleobase(x))
         |> Seq.toList
@@ -41,11 +42,11 @@ module Common =
         | _ -> ' '
     
     let explodeDnaToRna (x:string) = seq { 
-        for c in x.ToCharArray() do
+        for c in explode x do
             yield convertDnaNucleobaseToRna c
     }
-        
-    let implode (x:char list) =
-        let sb = StringBuilder(x.Length)
-        x |> List.iter (sb.Append >> ignore)
-        sb.ToString()
+
+    let translateDnaToRna (x:string) =
+        explodeDnaToRna x
+        |> Seq.toList
+        |> implode
