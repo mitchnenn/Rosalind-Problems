@@ -6,7 +6,7 @@ open Helpers
 open Xunit
 open Xunit.Abstractions
 open RosalindLib.StringUtilities
-open RosalindLib.Common
+open RosalindLib.NucleotideBase
 
 module ComplimentDnaNucleotideBases =
     

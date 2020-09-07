@@ -2,7 +2,7 @@ namespace RosalindLib
 
 open StringUtilities
 
-module Common =
+module NucleotideBase =
     
     let getNucleobase (nb,_) = nb 
 

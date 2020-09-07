@@ -15,7 +15,11 @@
         <Compile Include="HammingDistance.fs" />
         <Compile Include="GraphOverlapEdges.fs" />
         <Compile Include="NucleotideBase.fs" />
+        <Compile Include="AminoAcid.fs" />
         <Compile Include="Library.fs" />
+        <Content Include="TestData\**\*.*">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>

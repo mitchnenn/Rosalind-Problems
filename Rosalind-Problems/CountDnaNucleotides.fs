@@ -5,7 +5,7 @@ open System.IO
 open Xunit
 open Xunit.Abstractions
 open Helpers
-open RosalindLib.Common
+open RosalindLib.NucleotideBase
 
 module Tests =
         

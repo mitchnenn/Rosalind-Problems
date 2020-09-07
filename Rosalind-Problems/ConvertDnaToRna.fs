@@ -5,7 +5,7 @@ open System.IO
 open Xunit
 open Xunit.Abstractions
 open RosalindLib.StringUtilities
-open RosalindLib.Common
+open RosalindLib.NucleotideBase
 open Helpers
 
 module ConvertDnaToRna = 

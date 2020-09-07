@@ -24,7 +24,7 @@
         <Compile Include="ParseFasta.fs" />
         <Compile Include="HammingDistance.fs" />
         <Compile Include="MendelProbability.fs" />
-        <Compile Include="TarnslatingRna.fs" />
+        <Compile Include="TranslatDnatoRnaModule.fs" />
         <Compile Include="Motif.fs" />
         <Compile Include="MostLikelyCommonAncestor.fs" />
         <Compile Include="AdjacentGraphList.fs" />
