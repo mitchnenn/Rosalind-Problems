@@ -40,8 +40,11 @@ module Common =
         | 'T' -> 'U'
         | _ -> ' '
     
-    let explodeDnaToRna (x:string) = [| for c in x -> convertDnaNucleobaseToRna(c) |]
-
+    let explodeDnaToRna (x:string) = seq { 
+        for c in x.ToCharArray() do
+            yield convertDnaNucleobaseToRna c
+    }
+        
     let implode (x:char list) =
         let sb = StringBuilder(x.Length)
         x |> List.iter (sb.Append >> ignore)

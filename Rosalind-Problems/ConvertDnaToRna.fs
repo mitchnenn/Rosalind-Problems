@@ -15,18 +15,13 @@ module ConvertDnaToRna =
         [<Fact>]
         member __.``Convert DNA to RNA test`` () =
             // Arrange.
-            let workingDir = Path.Combine(Directory.GetCurrentDirectory(), "TestData")
-            let inputFile = Path.Combine(workingDir, "convert_dna_rna.txt")
-            let data = File.ReadAllText(inputFile)
+            let data = File.ReadAllText("TestData/convert_dna_rna.txt")
                         
             // Act.
-            let results = explodeDnaToRna data |> Array.toList
+            let results = explodeDnaToRna data |> Seq.toList
             
             // Assert.
             let actual = implode results
             printfn "%s" actual
-            let outputFile = Path.Combine(workingDir, "convert_dna_rna-output.txt") 
-            if File.Exists(outputFile) then File.Delete(outputFile)
-            File.WriteAllText(outputFile, actual)
             Assert.Equal("GAUGGAACUUGACUACGUAAAUU", actual)
             
