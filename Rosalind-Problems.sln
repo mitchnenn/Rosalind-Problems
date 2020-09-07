@@ -6,6 +6,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RosalindLib", "RosalindLib\
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ProteinMotifFinder", "ProteinMotifFinder\ProteinMotifFinder.fsproj", "{988D475D-7BB3-4EFA-A32C-34B8BAE60FDC}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "InferMRna", "InferMRna\InferMRna.fsproj", "{812C2E43-3D3F-4489-B3FE-5BB00BE8F56E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{988D475D-7BB3-4EFA-A32C-34B8BAE60FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{988D475D-7BB3-4EFA-A32C-34B8BAE60FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{988D475D-7BB3-4EFA-A32C-34B8BAE60FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{812C2E43-3D3F-4489-B3FE-5BB00BE8F56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{812C2E43-3D3F-4489-B3FE-5BB00BE8F56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{812C2E43-3D3F-4489-B3FE-5BB00BE8F56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{812C2E43-3D3F-4489-B3FE-5BB00BE8F56E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
