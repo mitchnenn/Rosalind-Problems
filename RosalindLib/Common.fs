@@ -1,4 +1,4 @@
-namespace Rosalind_Problems
+namespace RosalindLib
 
 open System.Text
 

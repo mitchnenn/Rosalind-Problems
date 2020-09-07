@@ -5,7 +5,7 @@ open System.IO
 open Helpers
 open Xunit
 open Xunit.Abstractions
-open Common
+open RosalindLib.Common
 
 module ComplimentDnaNucleotideBases =
     

@@ -5,7 +5,7 @@ open System.IO
 open Xunit
 open Xunit.Abstractions
 open Helpers
-open Common
+open RosalindLib.Common
 
 module Tests =
         

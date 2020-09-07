@@ -8,6 +8,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ProteinMotifFinder", "Prote
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "InferMRna", "InferMRna\InferMRna.fsproj", "{812C2E43-3D3F-4489-B3FE-5BB00BE8F56E}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "OpenReadFrames", "OpenReadFrames\OpenReadFrames.fsproj", "{D7F2C93E-6A48-46B4-8F2C-D53C412B9E55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{812C2E43-3D3F-4489-B3FE-5BB00BE8F56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{812C2E43-3D3F-4489-B3FE-5BB00BE8F56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{812C2E43-3D3F-4489-B3FE-5BB00BE8F56E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7F2C93E-6A48-46B4-8F2C-D53C412B9E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7F2C93E-6A48-46B4-8F2C-D53C412B9E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7F2C93E-6A48-46B4-8F2C-D53C412B9E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7F2C93E-6A48-46B4-8F2C-D53C412B9E55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
