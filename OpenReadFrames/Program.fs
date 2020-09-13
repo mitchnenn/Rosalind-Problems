@@ -11,7 +11,8 @@ let getDnaCodons = DnaCodon.Load("TestData/dna-codon-table.csv").Rows
                 |> dict
 
 let getAminoAcid dnaCodon (dnaCodons:IDictionary<string,string>) =
-    dnaCodons.Item dnaCodon
+    let aa =dnaCodons.Item dnaCodon
+    aa.Trim()
 
 [<EntryPoint>]
 let main argv =
