@@ -5,6 +5,7 @@ open FSharp.Data
 module AminoAcid =
 
     let keywordStop = "Stop"
+    let keywordUnknown = "Unknown"
     
     let rnaCodonsPath = "TestData/rna-codon-table.csv"
 
@@ -14,7 +15,7 @@ module AminoAcid =
 
     let readRnaCodonsPath path = FileUtilities.readLines path 
 
-    let matchAminoAcid rnaCodon =
+    let matchRnaCodonToAminoAcid rnaCodon =
         match rnaCodon with
         | "UUC" | "UUU" -> "F"
         | "UUA" | "UUG" | "CUC" | "CUU" | "CUA" | "CUG" -> "L"
@@ -37,12 +38,36 @@ module AminoAcid =
         | "GAU" | "GAC" -> "D"
         | "GAA" | "GAG" -> "E"
         | "GGU" | "GGC" | "GGA" | "GGG" -> "G"
-        | _ -> "Unknown"    
+        | _ -> keywordUnknown    
 
-    let parseAminoAcids (rnaCodonString:string) =
-        (StringUtilities.chunkString 3 rnaCodonString
-            |> List.map (fun rc -> matchAminoAcid rc)
-            |> String.concat ""
-        ).Split(keywordStop)
-        |> Array.filter(fun s -> s <> "")
-
+    let matchDnaCondonToAminoAcid dnaCondon =
+        match dnaCondon with
+        | "TTT" | "TTC" -> "F"
+        | "TTA" | "TTG" | "CTT" | "CTC" | "CTA" | "CTG" -> "L"
+        | "TCT" | "TCC" | "TCA" | "TCG" | "AGT" | "AGC" -> "S"
+        | "TAT" | "TAC" -> "Y"
+        | "TAA" | "TAG" | "TGA" -> keywordStop
+        | "TGT" | "TGC" -> "C"
+        | "TGG" -> "W"
+        | "CCT" | "CCC" | "CCA" | "CCG" -> "P"
+        | "CAT" | "CAC" -> "H"
+        | "CAA" | "CAG" -> "Q"
+        | "CGT" | "CGC" | "CGA" | "CGG" | "AGA" | "AGG" -> "R"
+        | "ATT" | "ATC" | "ATA" -> "I"
+        | "ATG" -> "M" // Start
+        | "ACT" | "ACC" | "ACA" | "ACG" -> "T"
+        | "AAT" | "AAC" -> "N"
+        | "AAA" | "AAG" -> "K"
+        | "GTT" | "GTC" | "GTA" | "GTG" -> "V"
+        | "GCT" | "GCC" | "GCA" | "GCG" -> "A"
+        | "GAT" | "GAC" -> "D"
+        | "GAA" | "GAG" | "GGT" -> "E"
+        | "GGT" | "GGC" | "GGA" | "GGG" -> "G"
+        | _ -> keywordUnknown
+    
+    let parseToAminoAcid matchFunc (sequence:string) =
+        let result = StringUtilities.chunkString 3 sequence
+                     |> List.map (fun dc -> matchFunc dc)
+                     |> String.concat ""
+        result.Split(keywordStop) |> Array.filter(fun s -> s <> "")
+        
