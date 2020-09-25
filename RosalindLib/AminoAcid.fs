@@ -40,6 +40,12 @@ module AminoAcid =
         | "GGU" | "GGC" | "GGA" | "GGG" -> "G"
         | _ -> keywordUnknown    
 
+    let matchRnaToProteins (sequence:string) =
+        let result = StringUtilities.chunkString 3 sequence
+                     |> List.map (fun dc -> matchRnaCodonToAminoAcid dc)
+                     |> String.concat ""
+        result.Split(keywordStop) |> Array.filter(fun s -> s <> "")
+
     let matchDnaCondonToAminoAcid dnaCondon =
         match dnaCondon with
         | "TTT" | "TTC" -> "F"
@@ -61,13 +67,13 @@ module AminoAcid =
         | "GTT" | "GTC" | "GTA" | "GTG" -> "V"
         | "GCT" | "GCC" | "GCA" | "GCG" -> "A"
         | "GAT" | "GAC" -> "D"
-        | "GAA" | "GAG" | "GGT" -> "E"
+        | "GAA" | "GAG" -> "E"
         | "GGT" | "GGC" | "GGA" | "GGG" -> "G"
         | _ -> keywordUnknown
-    
-    let parseToAminoAcid matchFunc (sequence:string) =
+
+
+    let matchDnaToProteins (sequence:string) =
         let result = StringUtilities.chunkString 3 sequence
-                     |> List.map (fun dc -> matchFunc dc)
+                     |> List.map (fun dc -> matchDnaCondonToAminoAcid dc)
                      |> String.concat ""
         result.Split(keywordStop) |> Array.filter(fun s -> s <> "")
-        
