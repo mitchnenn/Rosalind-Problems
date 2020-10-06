@@ -25,4 +25,9 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\RosalindLib\RosalindLib.fsproj" />
+      <ProjectReference Include="..\UnitTestHelperLib\UnitTestHelperLib.fsproj" />
+    </ItemGroup>
+
 </Project>

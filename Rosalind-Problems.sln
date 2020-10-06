@@ -10,8 +10,6 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "InferMRna", "InferMRna\Infe
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "OpenReadFrames", "OpenReadFrames\OpenReadFrames.fsproj", "{D7F2C93E-6A48-46B4-8F2C-D53C412B9E55}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "EnumerateGeneOrder", "EnumerateGeneOrder\EnumerateGeneOrder.fsproj", "{5FE09B47-9D51-4E8D-B565-120F4C4E32E5}"
-EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Permutations", "Permutations\Permutations.fsproj", "{8E0893C7-8C34-4CB3-B0E2-8B2AAADC3A9C}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ProteinMass", "ProteinMass\ProteinMass.fsproj", "{5B16EA60-49D7-4B6D-A7D2-412FC682F4CD}"
@@ -46,10 +44,6 @@ Global
 		{D7F2C93E-6A48-46B4-8F2C-D53C412B9E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7F2C93E-6A48-46B4-8F2C-D53C412B9E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7F2C93E-6A48-46B4-8F2C-D53C412B9E55}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FE09B47-9D51-4E8D-B565-120F4C4E32E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FE09B47-9D51-4E8D-B565-120F4C4E32E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FE09B47-9D51-4E8D-B565-120F4C4E32E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FE09B47-9D51-4E8D-B565-120F4C4E32E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E0893C7-8C34-4CB3-B0E2-8B2AAADC3A9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E0893C7-8C34-4CB3-B0E2-8B2AAADC3A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E0893C7-8C34-4CB3-B0E2-8B2AAADC3A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU

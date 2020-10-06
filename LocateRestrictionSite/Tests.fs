@@ -1,8 +1,14 @@
-module Tests
+namespace LocateRestrictionSite
 
 open System
+open UnitTestHelperLib.Converter
 open Xunit
+open Xunit.Abstractions
 
-[<Fact>]
-let ``My test`` () =
-    Assert.True(true)
+module Tests =
+    type PermutationTests(output : ITestOutputHelper) =
+        do new Converter(output) |> Console.SetOut
+
+        [<Fact>]
+        let ``My test`` () =
+            Assert.True(true)

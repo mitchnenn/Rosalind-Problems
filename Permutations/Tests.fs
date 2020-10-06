@@ -1,16 +1,10 @@
 namespace Permutations
 
 open System
-open System.IO
 open System.Text
 open Xunit
+open UnitTestHelperLib.Converter
 open Xunit.Abstractions
-
-type Converter( output : ITestOutputHelper ) =
-    inherit TextWriter()
-    override __.Encoding = stdout.Encoding
-    override __.WriteLine message = output.WriteLine message
-    override __.Write message = output.WriteLine message
 
 module Tests =
     type PermutationTests(output : ITestOutputHelper) =
