@@ -2,7 +2,7 @@ namespace Rosalind_Problems
 
 open System
 open System.Numerics
-open Helpers
+open UnitTestHelperLib.Converter
 open Xunit
 open Xunit.Abstractions
 

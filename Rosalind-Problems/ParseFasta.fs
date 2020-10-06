@@ -4,7 +4,7 @@ open System
 open System.IO
 open Xunit
 open Xunit.Abstractions
-open Helpers
+open UnitTestHelperLib.Converter
 open RosalindLib.FileUtilities
 open RosalindLib.ReadFasta
 open RosalindLib.CGContent

@@ -2,7 +2,7 @@ namespace Rosalind_Problems
 
 open System
 open Xunit.Abstractions
-open Helpers
+open UnitTestHelperLib.Converter
 open Xunit
 
 /// # of offspring genotype

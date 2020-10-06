@@ -3,7 +3,7 @@ namespace Rosalind_Problems
 open System
 open Xunit
 open Xunit.Abstractions
-open Rosalind_Problems.Helpers
+open UnitTestHelperLib.Converter
 open RosalindLib.ParseFasta
 open RosalindLib.GraphOverlapEdges
 

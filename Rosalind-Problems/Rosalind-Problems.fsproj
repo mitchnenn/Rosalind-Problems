@@ -16,7 +16,6 @@
         <Content Include="TestData/**/*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Compile Include="Helpers.fs" />
         <Compile Include="CountDnaNucleotides.fs" />
         <Compile Include="ConvertDnaToRna.fs" />
         <Compile Include="ComplimentDnaNucleotideBases.fs" />
@@ -37,14 +36,21 @@
     <ItemGroup>
         <PackageReference Include="FParsec" Version="1.1.1" />
         <PackageReference Include="FSharp.Data" Version="3.3.3" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
-        <PackageReference Include="xunit" Version="2.4.0" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
-        <PackageReference Include="coverlet.collector" Version="1.0.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0-preview-20200921-01" />
+        <PackageReference Include="xunit" Version="2.4.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector" Version="1.3.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\RosalindLib\RosalindLib.fsproj" />
+      <ProjectReference Include="..\UnitTestHelperLib\UnitTestHelperLib.fsproj" />
     </ItemGroup>
 
 </Project>

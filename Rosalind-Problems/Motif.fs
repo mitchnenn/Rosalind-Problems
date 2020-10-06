@@ -1,7 +1,7 @@
 namespace Rosalind_Problems
 
 open System
-open Rosalind_Problems.Helpers
+open UnitTestHelperLib.Converter
 open Xunit
 open Xunit.Abstractions
 

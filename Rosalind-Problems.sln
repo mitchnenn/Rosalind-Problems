@@ -16,6 +16,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Permutations", "Permutation
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ProteinMass", "ProteinMass\ProteinMass.fsproj", "{5B16EA60-49D7-4B6D-A7D2-412FC682F4CD}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LocateRestrictionSite", "LocateRestrictionSite\LocateRestrictionSite.fsproj", "{EFE1F12D-C5D9-4CB4-8428-7D256F119C83}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "UnitTestHelperLib", "UnitTestHelperLib\UnitTestHelperLib.fsproj", "{733529F5-7755-42D7-AC26-CCF23CDEF412}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +58,13 @@ Global
 		{5B16EA60-49D7-4B6D-A7D2-412FC682F4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B16EA60-49D7-4B6D-A7D2-412FC682F4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B16EA60-49D7-4B6D-A7D2-412FC682F4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE1F12D-C5D9-4CB4-8428-7D256F119C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE1F12D-C5D9-4CB4-8428-7D256F119C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE1F12D-C5D9-4CB4-8428-7D256F119C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE1F12D-C5D9-4CB4-8428-7D256F119C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{733529F5-7755-42D7-AC26-CCF23CDEF412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{733529F5-7755-42D7-AC26-CCF23CDEF412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{733529F5-7755-42D7-AC26-CCF23CDEF412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{733529F5-7755-42D7-AC26-CCF23CDEF412}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

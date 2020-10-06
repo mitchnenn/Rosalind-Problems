@@ -4,9 +4,8 @@ open System
 open System.IO
 open Xunit
 open Xunit.Abstractions
-open RosalindLib.StringUtilities
 open RosalindLib.NucleotideBase
-open Helpers
+open UnitTestHelperLib.Converter
 
 module ConvertDnaToRna = 
 

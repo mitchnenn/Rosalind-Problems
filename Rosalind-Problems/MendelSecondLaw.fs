@@ -3,7 +3,7 @@ namespace Rosalind_Problems
 open System
 open Xunit
 open Xunit.Abstractions
-open Helpers
+open UnitTestHelperLib.Converter
 open RosalindLib.MathUtilities
 
 module MendelSecondLaw =
