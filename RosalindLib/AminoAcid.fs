@@ -76,4 +76,5 @@ module AminoAcid =
         let result = StringUtilities.chunkString 3 sequence
                      |> List.map (fun dc -> matchDnaCondonToAminoAcid dc)
                      |> String.concat ""
-        result.Split(keywordStop) |> Array.filter(fun s -> s <> "")
+        result.Split(keywordStop)
+        |> Array.filter(fun s -> s <> "")

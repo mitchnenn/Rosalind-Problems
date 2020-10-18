@@ -1,16 +1,21 @@
 namespace RnaSplicing
 
-open System
+open System.Text
 open Xunit
 open Xunit.Abstractions
-open UnitTestHelperLib.Converter
+open FParsec
+open UnitTestHelperLib.FParsecHelper
 open RosalindLib.ParseFasta
+open RosalindLib.AminoAcid
 
 module RnaSplicingTests = 
-    type PermutationTestsType(output : ITestOutputHelper) =
-        do new Converter(output) |> Console.SetOut
+    type PermutationTestsType(output:ITestOutputHelper) =
 
-        let getExons dnaSequence introns = ()
+        let getCodingRegion (dnaSequence:string) (introns:string list) =
+            let mutable mrnaString = dnaSequence
+            for i in introns do
+                mrnaString <- mrnaString.Replace(i, "")
+            mrnaString
         
         // Assumes only on result data set will exist for
         // a given input data set.
@@ -21,9 +26,9 @@ module RnaSplicingTests =
             let dnaSequence = entries |> List.head |> fun r -> r.Sequence
             let introns = entries |> List.skip 1 |> List.map(fun r -> r.Sequence)
             // Assert.
-            let exons = getExons dnaSequence introns
-            let actual = dnaSequence
+            let codingRegion = getCodingRegion dnaSequence introns
+            let actual = matchDnaToProteins codingRegion |> Seq.head
+            output.WriteLine(sprintf "%s" actual)
             // Assert.
-            printfn "actual: %s" actual
-            Assert.Equal("MVYIADKQHVASREAYGHMFKVCA", actual)
+            Assert.Equal("MSSPAYRWVRKTKFLHMTYRLSWYRGETFSLGIASCGTSCCLSLALAFRDELVCFSTFVQSGRILPVRLTGGLASLGLSYTGKSAIVGICGANSALPAVCLPAAALSLSSLSSPGDCHTSELWHVKYEEAAVLEAAHARRAIRAMQMLPMMTKSRKYQASWRTDAVKGTQSCT", actual)
                 
