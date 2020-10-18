@@ -18,9 +18,11 @@ module ParseFasta =
         many1Strings (sequenceChars .>> newline)
 
     let entries = many1 (tuple2 id sequence)
+    
+    type FastaRecord = {Id:string; Sequence:string}
 
     let parseFastaEntries (path:string) =
         let reply = runParserOnFile entries () path Encoding.UTF8
         match reply with
-        | Success(result, _, _) -> result
+        | Success(result, _, _) -> result |> List.map(fun t -> {Id=(fst t);Sequence=(snd t)})
         | Failure(_,_,_) -> List.empty

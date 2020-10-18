@@ -16,9 +16,9 @@ module AdjacentGraphList =
         member __.``Parse fasta test`` () =
             let entries = parseFastaEntries "TestData/rosalind.fasta"
             printfn "%A" entries.[0]
-            let (id, sequence) = entries.[0]
-            Assert.True(id.StartsWith("Rosalind"))
-            Assert.True(sequence.StartsWith("GCCGGGTGCCGTGGCAAGAGTAGCGGTTCTCAGACCATA"))
+            let record = entries.[0]
+            Assert.True(record.Id.StartsWith("Rosalind"))
+            Assert.True(record.Sequence.StartsWith("GCCGGGTGCCGTGGCAAGAGTAGCGGTTCTCAGACCATA"))
         
         [<Theory>]
         [<InlineData(3)>]

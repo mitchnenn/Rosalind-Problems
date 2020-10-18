@@ -38,6 +38,6 @@ module Tests =
         [<Fact>]
         let ``My test`` () =
             parseFastaEntries "data/SampleData.fasta"
-            |> List.iter (fun (_,dnaString) -> printReversePalindromes dnaString) 
+            |> List.iter (fun r -> printReversePalindromes r.Sequence) 
 
             Assert.True(true)

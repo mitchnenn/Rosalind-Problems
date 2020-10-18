@@ -36,7 +36,7 @@ module CommonMotif =
         [<InlineData("TestData/commonmotif.fasta")>]
         member __.``Test common motif search`` path =
             let entries = parseFastaEntries path
-                          |> List.map (fun (_,astr) -> astr)
+                          |> List.map (fun r -> r.Sequence)
             if entries.IsEmpty <> true then
                 let refString = entries.[0]
                 let candidates = getAllCandidates refString

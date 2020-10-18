@@ -18,6 +18,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LocateRestrictionSite", "Lo
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "UnitTestHelperLib", "UnitTestHelperLib\UnitTestHelperLib.fsproj", "{733529F5-7755-42D7-AC26-CCF23CDEF412}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RnaSplicing", "RnaSplicing\RnaSplicing.fsproj", "{C5730098-BEA0-41A4-B01C-F373D4EE596D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,5 +62,9 @@ Global
 		{733529F5-7755-42D7-AC26-CCF23CDEF412}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{733529F5-7755-42D7-AC26-CCF23CDEF412}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{733529F5-7755-42D7-AC26-CCF23CDEF412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5730098-BEA0-41A4-B01C-F373D4EE596D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5730098-BEA0-41A4-B01C-F373D4EE596D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5730098-BEA0-41A4-B01C-F373D4EE596D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5730098-BEA0-41A4-B01C-F373D4EE596D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
