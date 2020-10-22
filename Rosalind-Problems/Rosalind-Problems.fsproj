@@ -30,6 +30,7 @@
         <Compile Include="CalcExpectedOffspring.fs" />
         <Compile Include="CommonMotif.fs" />
         <Compile Include="MendelSecondLaw.fs" />
+        <Compile Include="EnumKmersLex.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
