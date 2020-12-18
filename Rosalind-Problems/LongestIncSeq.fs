@@ -1,7 +1,5 @@
 namespace Rosalind_Problems
 
-open System
-open System.Collections.Generic
 open System.Text
 open Xunit
 open Xunit.Abstractions
@@ -19,36 +17,71 @@ module LongestIncSeq =
             let reply = runParserOnFile parseIntSeqRecord () path Encoding.UTF8 
             match reply with
             | Success(result,_,_) -> { Length=fst(result); Sequence=snd(result)  }
-            | Failure(_,_,_) -> { Sequence=List.empty; Length=0 }
+            | Failure _ -> { Length=0; Sequence=List.empty }
         
-        let getLongestIncreasingSeq (sequence:int list) =
-            let highToLow = Stack<int>()
-            highToLow.Push(sequence.Head)
-            let lowToHigh = Stack<int>()
-            lowToHigh.Push(sequence.Head)
-            for n in sequence |> List.tail do
-                if n > highToLow.Peek() then
-                    highToLow.Pop() |> ignore
-                highToLow.Push(n)
-                if n < lowToHigh.Peek() then
-                    lowToHigh.Pop() |> ignore
-                lowToHigh.Push(n)
-            (highToLow.ToArray()
-             |> Array.toList
-             |> List.rev,
-             lowToHigh.ToArray()
-             |> Array.toList
-             |> List.rev)
+        let inc x y = y > x
+        
+        let dec x y = y < x
+        
+        let getSequence f current (rest:int list) =
+            List.fold (fun acc elem ->
+                       match f (acc |> List.head) elem with 
+                       | true -> elem::acc
+                       | false -> acc)
+                       [current]
+                       rest
+            |> List.rev
+            
+        let getAllSequences f (input:int list) =
+            let rec loop f list acc =
+                match list with
+                | [] -> acc    
+                | _::tail ->
+                    let seqs = getSequence f input.Head tail
+                    if List.length seqs > (List.head acc |> List.length) then
+                        loop f tail [seqs]
+                    else
+                        loop f tail acc
+            loop f input []
+        
+        let getEverySequence f (input:int list) =
+            let rec loop f list acc =
+                match list with
+                | [] -> acc |> List.sortBy(List.length) |> List.rev
+                | _::tail -> loop f tail (getAllSequences f list @ acc)
+            loop f input []
+
+        [<Fact>]
+        let ``Test get sequence`` () =
+            // Arrange.
+            let list = [2;1;6;5;7;4;3;9]
+            // Act.
+            let actual = getEverySequence inc list
+            // Assert.
+            let expected = [2;6;7;9]
+            Assert.Contains(expected, actual)
+                
+        [<Fact>]
+        let ``longest increasing sequence test 2`` () =
+            // Arrange.
+            let input = [0; 8; 4; 12; 2; 10; 6; 14; 1; 9; 5; 13; 3; 11; 7; 15]
+            // Act.
+            let actual = getEverySequence inc input
+            // Assert.
+            Assert.Contains([0; 8; 12; 14; 15], actual)
+            Assert.Contains([0; 4; 12; 14; 15], actual)
+            Assert.Contains([0; 12; 14; 15], actual)
         
         [<Fact>]
         let ``Find longest increasing sequence test`` () =
             // Arrange.
-            let path = "TestData/LongestIncSeq.txt"
-            let input = getInputSeq path
+            let input = getInputSeq "TestData/LongestIncSeq.txt"
             output.WriteLine(sprintf "%A" input)
             // Act.
-            let actual = getLongestIncreasingSeq input.Sequence
-            output.WriteLine(sprintf "%A" actual)
+            let increasing = getEverySequence inc input.Sequence
+            output.WriteLine(sprintf "%A" (increasing |> List.head))
+            let increasing = getEverySequence dec input.Sequence
+            output.WriteLine(sprintf "%A" (increasing |> List.head))
             // Assert.
             Assert.True(true)
 
